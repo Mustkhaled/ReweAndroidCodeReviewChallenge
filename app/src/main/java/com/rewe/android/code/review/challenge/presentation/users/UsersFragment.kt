@@ -1,30 +1,39 @@
 package com.rewe.android.code.review.challenge.presentation.users
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.rewe.android.code.review.challenge.R
+import com.rewe.android.code.review.challenge.presentation.users.compose.UsersComponentRender
+import dagger.hilt.android.AndroidEntryPoint
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [UsersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class UsersFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+    private val viewModel by viewModels<UsersViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_users, container, false)
+    ) = ComposeView(requireContext()).apply {
+        setContent {
+            MaterialTheme {
+                val state = viewModel.usersState.collectAsState().value
+                UsersComponentRender(state, findNavController()) {
+                    Snackbar.make(
+                        rootView,
+                        context.getString(R.string.error_message),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
     }
-
 }
