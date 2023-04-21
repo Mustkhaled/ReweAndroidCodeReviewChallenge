@@ -13,14 +13,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UsersViewModel @Inject constructor(private val useCase: UsersUsecase) : ViewModel() {
+    //TODO same problem regarding the using mutableStateFlow
     val usersState = MutableStateFlow<State<List<Users>>>(State.Loading())
-
+        // TODO used global scope
     init {
         GlobalScope.launch {
             getUsers()
         }
     }
-
+    //TODO could be private
     suspend fun getUsers() {
         useCase.getUsers().collectLatest {
             when (it) {

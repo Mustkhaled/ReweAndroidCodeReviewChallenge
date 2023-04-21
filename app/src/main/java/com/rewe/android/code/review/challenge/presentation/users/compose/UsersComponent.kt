@@ -27,6 +27,7 @@ import com.rewe.android.code.review.challenge.util.State
 @Composable
 fun UsersComponentRender(
     state: State<List<Users>>,
+    //TODO passing NavController is not good practice, we can replace it with a callback and make the navigation from the fragment
     navController: NavController,
     onError: () -> Unit
 ) {

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 @HiltViewModel
 class UserDetailsViewModel @Inject constructor(val useCase: UserDetailsUsecase): ViewModel() {
-
+    //TODO userDetailsState is public and mutable, stateflow should be used
     val userDetailsState = MutableStateFlow<State<UserDetails>>(State.Loading())
     suspend fun getUserDetails(userId: String) {
         useCase.getUserDetails(userId).collectLatest {

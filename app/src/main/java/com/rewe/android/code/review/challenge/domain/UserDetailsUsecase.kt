@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
-
+//TODO userDetailsRepository can be private
 class UserDetailsUsecase @Inject constructor(val userDetailsRepository: UserDetailsRepository){
     fun getUserDetails(userId: String): Flow<State<UserDetails>> = flow {
         emit(State.Loading())

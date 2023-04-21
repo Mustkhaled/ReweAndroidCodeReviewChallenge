@@ -18,9 +18,11 @@ import kotlinx.coroutines.async
 class UserDetailsFragment : Fragment() {
 
     private val viewModel by viewModels<UserDetailsViewModel>()
+    //TODO "userId" is not added to companion object
     private val userId by lazy {
         arguments?.getString("userId")
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +35,8 @@ class UserDetailsFragment : Fragment() {
         }
     }
 
+    //TODO Async shouldn't be used if no deferred result expected
+    //TODO the network call is called at onResume() callback, it means if user press home on his device and return baco the app. It will reload.
     override fun onResume() {
         super.onResume()
         lifecycle.coroutineScope.async {

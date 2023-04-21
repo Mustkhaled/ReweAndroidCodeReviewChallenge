@@ -1,7 +1,8 @@
 package com.rewe.android.code.review.challenge.data.model
 
 import com.google.gson.annotations.SerializedName
-
+//TODO all fields are nullable
+//TODO using data class is more efficient
 data class Users (
     @SerializedName("login") var login: String? = null,
     @SerializedName("id") var id: Int? = null,

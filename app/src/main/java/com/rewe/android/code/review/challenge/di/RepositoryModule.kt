@@ -8,7 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-
+//TODO ApiModule could be installed in ViewModelComponent instead of SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {

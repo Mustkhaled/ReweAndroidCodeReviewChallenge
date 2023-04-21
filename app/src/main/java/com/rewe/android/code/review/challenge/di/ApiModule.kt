@@ -6,6 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+
+//TODO ApiModule could be installed in ViewModelComponent instead of SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 class ApiModule {

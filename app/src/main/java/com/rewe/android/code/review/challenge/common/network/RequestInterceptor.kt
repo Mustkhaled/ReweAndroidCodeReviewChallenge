@@ -3,7 +3,7 @@ package com.rewe.android.code.review.challenge.common.network
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
-
+//TODO the access token is visible, and in plain format.
 const val accessToken = "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"
 
 class RequestInterceptor @Inject constructor() : Interceptor {

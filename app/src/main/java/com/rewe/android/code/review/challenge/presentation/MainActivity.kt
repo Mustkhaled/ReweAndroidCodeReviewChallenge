@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     fun setupToolbarTitle() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
+        //TODO we can use setupWithNavActionBar
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.toolbar.title = when (destination.id) {
                 R.id.usersFragment -> getString(R.string.user_label)
